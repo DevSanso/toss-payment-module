@@ -3,7 +3,7 @@ plugins {
     java
 }
 
-group = "com.github.DevSanso"
+group = "com.github.DevSanso.payment"
 version = "1.0-SNAPSHOT"
 
 repositories {
