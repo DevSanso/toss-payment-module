@@ -17,8 +17,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("io.ktor:ktor-server-core-jvm:2.0.0-beta-1")
     implementation("io.ktor:ktor-server-netty-jvm:2.0.0-beta-1")
-    implementation("io.ktor:ktor-server-status-pages-jvm:2.0.0-beta-1")
-    implementation("io.ktor:ktor-server-default-headers-jvm:2.0.0-beta-1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.2")
 }
 
