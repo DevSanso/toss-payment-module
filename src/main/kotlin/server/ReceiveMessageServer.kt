@@ -11,7 +11,13 @@ import kotlinx.serialization.json.*
 import com.github.DevSanso.payment.toss.data.PaymentResult
 import kotlinx.serialization.decodeFromString
 
-class ReceiveMessageServer(host : String, port : Int, path : String) {
+
+interface ServerMediation {
+    suspend fun waitPaymentResult(payToken : String) : PaymentResult
+}
+
+
+class ReceiveMessageServer(host : String, port : Int, path : String) : ServerMediation {
     private val httpEngine : ApplicationEngine
     private val map : ConcurrentHashMap<String,PaymentResult> = ConcurrentHashMap()
 
@@ -28,6 +34,10 @@ class ReceiveMessageServer(host : String, port : Int, path : String) {
         map[body.payToken] = body
     }
 
+    override suspend fun waitPaymentResult(payToken: String): PaymentResult {
+        while(map.keys.any{it == payToken}){}
+        return map[payToken]!!
+    }
 
 
     fun start() = httpEngine.start(wait = true)

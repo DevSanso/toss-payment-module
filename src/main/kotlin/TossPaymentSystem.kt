@@ -38,7 +38,8 @@ class TossPaymentSystem(val host : String,val port : Int,callbackPath : String) 
         val res = client.newCall(makeRequest(data)).execute()
 
         return RequestPresenter(
-            Json.decodeFromString<PaymentRequestResponse>(res.body.toString())
+            Json.decodeFromString<PaymentRequestResponse>(res.body.toString()),
+            paymentReceive
         )
     }
 
